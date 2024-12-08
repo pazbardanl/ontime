@@ -2,7 +2,7 @@
 project-name/
 ├── src/                            # Source code for the application
 │   ├── __init__.py                 # Makes src a package
-│   ├── main.py                     # Entry point of the application
+│   ├── ontime.py                     # Entry point of the application
 │   ├── config/                     # Configuration management
 │   │   ├── __init__.py
 │   │   ├── settings.py             # Centralized settings
