@@ -196,7 +196,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-44" value="QueryResolver" style="swimlane;startSize=20;fontStyle=1" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
+        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-44" value="QueryResolver" style="swimlane;startSize=20;fontStyle=1;fillColor=#009900;" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
           <mxGeometry x="311.38" y="310" width="278.62" height="110" as="geometry">
             <mxRectangle x="620" y="600" width="50" height="40" as="alternateBounds" />
           </mxGeometry>
@@ -204,7 +204,7 @@
         <mxCell id="nvfyEzK4BFwzWhvPfm2Y-45" value="&lt;span style=&quot;background-color: rgb(255, 255, 255); font-family: &amp;quot;Courier New&amp;quot;; font-size: 9.8pt;&quot;&gt;resolve_user_query&lt;/span&gt;(userQuery)" style="rounded=0;whiteSpace=wrap;html=1;" parent="nvfyEzK4BFwzWhvPfm2Y-44" vertex="1">
           <mxGeometry x="20" y="40" width="240" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-46" value="(I) NLPResolverInterface" style="swimlane;startSize=20;fontStyle=1" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
+        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-46" value="(I) NLPResolverInterface" style="swimlane;startSize=20;fontStyle=1;fillColor=#009900;" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
           <mxGeometry x="621.38" y="90" width="200" height="90" as="geometry">
             <mxRectangle x="620" y="600" width="50" height="40" as="alternateBounds" />
           </mxGeometry>
@@ -314,7 +314,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-93" value="OpenAINPLResolver" style="swimlane;startSize=20;fontStyle=1" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
+        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-93" value="OpenAINPLResolver" style="swimlane;startSize=20;fontStyle=1;fillColor=#009900;" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
           <mxGeometry x="711.38" y="195" width="200" height="45" as="geometry">
             <mxRectangle x="600" y="505" width="50" height="40" as="alternateBounds" />
           </mxGeometry>
