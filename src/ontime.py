@@ -3,7 +3,7 @@ from src.services.interfaces import QueryResolverInterface
 
 def main(queryResolver: QueryResolverInterface):
     print(f'OnTime service running')
-    queryResolver.resolve_user_query('Whtasup?')
+    queryResolver.resolve_user_query('Whatsup?')
 
 if __name__ == "__main__":
     queryResolver = get_query_resolver()
