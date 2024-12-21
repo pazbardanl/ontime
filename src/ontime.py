@@ -1,9 +1,9 @@
 from .di_config import get_query_resolver
 from src.services.interfaces import QueryResolverInterface
 
-def main(queryResolver: QueryResolverInterface):
+def main(query_resolver: QueryResolverInterface):
     print(f'OnTime service running')
-    queryResolver.resolve_user_query('Whatsup?')
+    query_resolver.resolve_user_query('am i free for lunch next Sunday?')
 
 if __name__ == "__main__":
     queryResolver = get_query_resolver()
