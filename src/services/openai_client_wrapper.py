@@ -11,7 +11,7 @@ class OpenAIClientWrapper(OpenAIClientWrapperInterface):
 
     def resolve_intention(self, user_query:str):
         completion = self.__get_nlp_completion(user_query)
-        return completion.choices[0].message
+        return completion.choices[0].message.content
 
     def _get_nlp_system_content(self):
         today = date.today()
@@ -24,10 +24,10 @@ class OpenAIClientWrapper(OpenAIClientWrapperInterface):
             
             Examples: 
             Input: "Am I available the coming Monday at 3 PM?" 
-            Output: {{"query":"Am I available the coming Monday at 3 PM?","today_date": 2024-12-21, "today_weekday": Saturday ,"intention": "check_availability", "date": "2024-12-23", "time": "15:00"}} 
+            Output: {{"query":"Am I available the coming Monday at 3 PM?","today_date": 2024-12-21, "today_weekday": Saturday ,"intention": "check_availability", "target_date": "2024-12-23", "target_time_frame": "15:00"}} 
             
             Input: "Can you suggest a slot of 90 minutes for Tuesday morning?" 
-            Output: {{"query":"Can you suggest a slot of 90 minutes for Tuesday morning?","today_date": 2024-12-21, "today_weekday": Saturday ,"intention": "propose_slots", "date": "2024-12-24", "time_range": "8:00-12:00", "duration_hrs": "1.5"}}. 
+            Output: {{"query":"Can you suggest a slot of 90 minutes for Tuesday morning?","today_date": 2024-12-21, "today_weekday": Saturday ,"intention": "propose_slots", "target_date": "2024-12-24", "target_time_frame": "8:00-12:00", "target_duration_hrs": "1.5"}}. 
             
             Early morning is 5am till 8am, morning is 8am till 12pm, noon is 12pm till 4pm, afternoon is 4pm till 6pm, 
             evening is 6pm till 10pm, night is 10pm till 5am. 

@@ -8,6 +8,6 @@ class QueryResolver(QueryResolverInterface):
 
     def resolve_user_query(self, user_query: str):
         print(f'user_query = {user_query}')
-        intention = self.__nlp_resolver.resolve_intention(user_query)
-        print(f'intention = {intention}')
+        intention_dto = self.__nlp_resolver.resolve_intention(user_query)
+        print(f'intention_dto = {intention_dto}')
         pass
