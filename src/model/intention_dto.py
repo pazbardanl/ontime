@@ -7,7 +7,7 @@ class IntentionDTO:
                  intention: str,
                  target_date: str,
                  target_time_frame: str,
-                 target_slot_duration_hrs: str = 0
+                 target_slot_duration_hrs: str = '0'
                  ):
         self.__query = query
         self.__today_date = today_date
