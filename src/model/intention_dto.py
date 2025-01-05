@@ -7,7 +7,7 @@ class IntentionDTO:
                  intention: str,
                  target_date: str,
                  target_time_frame: str,
-                 target_duration_hrs: str = 0
+                 target_slot_duration_hrs: str = '0'
                  ):
         self.__query = query
         self.__today_date = today_date
@@ -15,7 +15,7 @@ class IntentionDTO:
         self.__intention = intention
         self.__target_date = target_date
         self.__target_time_frame = target_time_frame
-        self.__target_duration_hrs = target_duration_hrs
+        self.__target_slot_duration_hrs = target_slot_duration_hrs
 
     @property
     def query(self):
@@ -42,8 +42,8 @@ class IntentionDTO:
         return self.__target_time_frame
 
     @property
-    def target_duration_hrs(self):
-        return self.__target_duration_hrs
+    def target_slot_duration_hrs(self):
+        return self.__target_slot_duration_hrs
 
     def __str__(self):
         return (f"IntentionDTO("
@@ -53,7 +53,7 @@ class IntentionDTO:
                 f"intention='{self.intention}', "
                 f"target_date='{self.target_date}', "
                 f"target_time_frame='{self.target_time_frame}', "
-                f"target_duration_hrs='{self.target_duration_hrs}')")
+                f"target_slot_duration_hrs='{self.target_slot_duration_hrs}')")
 
     def __repr__(self):
         return self.__str__()
