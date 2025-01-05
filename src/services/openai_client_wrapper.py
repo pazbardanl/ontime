@@ -24,7 +24,7 @@ class OpenAIClientWrapper(OpenAIClientWrapperInterface):
             - `intention`: Either "check_availability" or "propose_slots", based on the user query.
             - `target_date`: A specific date mentioned in the query in "YYYY-MM-DD" format.
             - `target_time_frame`: The time range or time of day related to the query.
-            - `target_slot_duration_hrs`: The duration of the time slot in hours. This is "NA" for "check_availability" queries.
+            - `target_slot_duration_hrs`: The duration of the time slot in hours.
             
             ### Behavior:
             1. For queries about checking availability (e.g., "Am I free on 1.1.2025 from 8 AM till 2 PM"):
@@ -36,13 +36,15 @@ class OpenAIClientWrapper(OpenAIClientWrapperInterface):
                  - **Start time with duration (hours):** Convert to a time range (e.g., "13:00-14:30").
                  - **Start time with duration (minutes):** Convert to a time range (e.g., "13:00-14:30").
                  - **Time of day:** Return a predefined range (e.g., "8:00-12:00" for "morning").
-               - Set `target_slot_duration_hrs` to "NA".
+               - Set `target_slot_duration_hrs` based on the query: if the query specify a target time frame that is larger than the requested slot, then state the slot duration in hours. 
+                    If the time frame is smaller than the slot duration then the slot should be ignored ("NA"). if slot duration is not stated in the query then it should be "NA".
             
             2. For queries about proposing time slots (e.g., "When can I meet for 30 minutes on 1.1.2025 between 9 AM and 1 PM"):
                - Set `intention` to "propose_slots".
                - Parse the `target_date` from the query.
                - Determine `target_time_frame` as described above.
                - Parse the slot duration in hours and set it in `target_slot_duration_hrs`.
+               - Note propose_slots scenario is relevant only when user explicitly asks to propose, recommend or suggest slots. otherwise default to check_availability
             
             ### Time of Day Mapping:
             - Early morning: "5:00-8:00"
@@ -54,7 +56,7 @@ class OpenAIClientWrapper(OpenAIClientWrapperInterface):
             
             ### Examples:
             
-            **Example 1:**
+            Example 1:
             Query: "Am I free on 1.1.2025 from 8 AM till 2 PM?"
             Response:
             {{
@@ -114,12 +116,128 @@ class OpenAIClientWrapper(OpenAIClientWrapperInterface):
                 "target_time_frame": "12:00-16:00",
                 "target_slot_duration_hrs": "0.5"
             }}
+            Example 6: Query: "am i free on Monday 13-14 for 15mins?"
+            Note: this is a tricky one, since this is clearly check_availability and the 15mins slot should be ignored.
+            Response:
+            {{
+                "query": "am i free on Monday 13-14 for 15mins?"
+                "today_date": "2023-12-21",
+                "today_weekday": "Monday",
+                "intention": "check_availability",
+                "target_date": "2025-01-01",
+                "target_time_frame": "13:00-14:00",
+                "target_slot_duration_hrs": "NA"
+            }}
+            Example 7:
+            Query: "Am I free on 1.1.2025 at 2 PM?"
+            Note: target_time_frame should have only start time as end time was not specified
+            Response:
+            {{
+                "query": "Am I free on 1.1.2025 at 2 PM?",
+                "today_date": "2023-12-21",
+                "today_weekday": "Thursday",
+                "intention": "check_availability",
+                "target_date": "2025-01-01",
+                "target_time_frame": "14:00",
+                "target_slot_duration_hrs": "NA"
+            }}
+            Example 8:
+            Query: "Am I free on Thursday?"
+            Note: no times specified, so needs to take the default day times (8am-8pm) as target_time_frame
+            Response:
+            {{
+                "query": "Am I free on Thursday?",
+                "today_date": "2023-12-21",
+                "today_weekday": "Thursday",
+                "intention": "check_availability",
+                "target_date": "2025-01-01",
+                "target_time_frame": "8:00-20:00",
+                "target_slot_duration_hrs": "NA"
+            }}
+            Example 9:
+            Query: "am i free on Sunday till quarter to three in the afternoon?"
+            Note: no start time specified, so default to start 8am. also, end time is described verbally.
+            Response:
+            {{
+                "query": "am i free on Sunday till quarter to three in the afternoon?",
+                "today_date": "2023-12-21",
+                "today_weekday": "Thursday",
+                "intention": "check_availability",
+                "target_date": "2025-01-01",
+                "target_time_frame": "8:00-14:45",
+                "target_slot_duration_hrs": "NA"
+            }}
+            Example 10:
+            Query: "am i free next Tuesday from eight thirty in the morning till twenty to five in the afternoon"
+            Response:
+            {{
+                "query": "am i free next Tuesday from eight thirty in the morning till twenty to five in the afternoon",
+                "today_date": "2023-12-21",
+                "today_weekday": "Thursday",
+                "intention": "check_availability",
+                "target_date": "2025-01-01",
+                "target_time_frame": "8:30-16:40",
+                "target_slot_duration_hrs": "NA"
+            }}
+            Example 11:
+            Query: "am i available this Thursday for 5 hours?"
+            Response:
+            {{
+                "query": "am i available this Thursday for 5 hours",
+                "today_date": "2023-12-21",
+                "today_weekday": "Thursday",
+                "intention": "check_availability",
+                "target_date": "2025-01-01",
+                "target_time_frame": "8:00-20:00",
+                "target_slot_duration_hrs": "5"
+            }}
+            Example 12:
+            Query: "can i meet with Mike on Tuesday until 11am for an hour and a half?"
+            Response:
+            {{
+                "query": "can i meet with Mike on Tuesday until 11am for an hour and a half?",
+                "today_date": "2023-12-21",
+                "today_weekday": "Thursday",
+                "intention": "check_availability",
+                "target_date": "2025-01-01",
+                "target_time_frame": "8:00-11:00",
+                "target_slot_duration_hrs": "1.5"
+            }}
+            Example 13:
+            Query: "can i have a 1 hour meeting next Friday between 10am and 2pm?"
+            Note: query phrasing might suggest the request is for 'propose_slots', while it's actually 'check_availability' since the user is merely trying to understand whether they are available for 1 hour within a time frame.
+            Response:
+            {{
+                "query": "can i have a 1 hour meeting next Friday between 10am and 2pm?",
+                "today_date": "2023-12-21",
+                "today_weekday": "Thursday",
+                "intention": "check_availability",
+                "target_date": "2025-01-01",
+                "target_time_frame": "10:00-14:00",
+                "target_slot_duration_hrs": "1"
+            }}
+            Example 14:
+            Query: "can I schedule a two hour meeting next Sunday between 8:30 and 11?"
+            Note: query phrasing might suggest the request is for 'propose_slots', while it's actually 'check_availability' since the user is merely trying to understand whether they are available for 2 hour within a time frame.
+            Response:
+            {{
+                "query": "can I schedule a one hour meeting next Sunday between 8:30 and 11?",
+                "today_date": "2023-12-21",
+                "today_weekday": "Thursday",
+                "intention": "check_availability",
+                "target_date": "2025-01-01",
+                "target_time_frame": "8:30-11:00",
+                "target_slot_duration_hrs": "2"
+            }}
+
             Key Notes:
             Always parse the target_date and target_time_frame carefully from the query.
             For ambiguous queries, use predefined ranges for "time of day".
             Ensure the JSON response is well-formed, valid, and includes all required fields.
+            Refrain from leading zeros when specifying times (example: 07:30 is wrong, 7:30 is right) 
             Refrain from wrapping the response string with ```json...```
             Make sure to include the query field in the response, with the original user query.
+            As default, day starts at 8am and ends 8pm
             Offset your dates considering today is {today}, {day_of_the_week}.
             """
 
