@@ -45,6 +45,19 @@ class IntentionDTO:
     def target_slot_duration_hrs(self):
         return self.__target_slot_duration_hrs
 
+    def __eq__(self, other):
+        if isinstance(other, IntentionDTO):
+            return (self.__query == other.__query and
+                    self.__today_date == other.__today_date and
+                    self.__today_weekday == other.__today_weekday and
+                    self.__intention == other.__intention and
+                    self.__target_date == other.__target_date and
+                    self.__target_time_frame == other.__target_time_frame)
+        return False
+
+    def __hash__(self):
+        return hash((self.__query, self.__today_date, self.__today_weekday, self.__intention, self.__target_date, self.__target_time_frame))
+
     def __str__(self):
         return (f"IntentionDTO("
                 f"query='{self.query}', "

@@ -226,7 +226,7 @@
         <mxCell id="nvfyEzK4BFwzWhvPfm2Y-50" value="&lt;b&gt;&lt;font color=&quot;#4c0099&quot;&gt;IntentionDTO&lt;/font&gt;&lt;/b&gt;&lt;div style=&quot;text-align: left;&quot;&gt;- intention&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;- date&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;- timeRange&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;- durationHrs&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
           <mxGeometry x="271.38" y="538.5" width="100" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-51" value="(I) ScheduleProvider" style="swimlane;startSize=20;fontStyle=1" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
+        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-51" value="(I) ScheduleProvider" style="swimlane;startSize=20;fontStyle=1;fillColor=#009900;" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
           <mxGeometry x="621.38" y="265" width="200" height="90" as="geometry">
             <mxRectangle x="620" y="600" width="50" height="40" as="alternateBounds" />
           </mxGeometry>
@@ -248,12 +248,12 @@
         <mxCell id="nvfyEzK4BFwzWhvPfm2Y-56" value="&lt;div style=&quot;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;font color=&quot;#0000ff&quot;&gt;SlotsDTO&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;- date&lt;/div&gt;&lt;div style=&quot;&quot;&gt;- slots[]&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;i&gt;(each slot is a pair if times)&lt;/i&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
           <mxGeometry x="161.38" y="538.5" width="100" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-58" value="AvailabiltyReslover" style="swimlane;startSize=20;fontStyle=1" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
+        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-58" value="(I) AvailabiltyReslover" style="swimlane;startSize=20;fontStyle=1;fillColor=#009900;" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
           <mxGeometry x="621.38" y="486" width="280" height="90" as="geometry">
             <mxRectangle x="620" y="600" width="50" height="40" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-59" value="checkAvailablity(&lt;b style=&quot;text-align: left;&quot;&gt;&lt;font color=&quot;#cc6600&quot;&gt;AvailablityCheckRequest&lt;/font&gt;&lt;/b&gt;)" style="rounded=0;whiteSpace=wrap;html=1;" parent="nvfyEzK4BFwzWhvPfm2Y-58" vertex="1">
+        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-59" value="checkAvailablity(&lt;b&gt;&lt;font color=&quot;#4c0099&quot;&gt;IntentionDTO&lt;/font&gt;&lt;/b&gt;,&lt;b style=&quot;text-align: left;&quot;&gt;&lt;font color=&quot;#0000ff&quot;&gt;SlotsDTO&lt;/font&gt;&lt;/b&gt;)&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" parent="nvfyEzK4BFwzWhvPfm2Y-58" vertex="1">
           <mxGeometry x="10" y="40" width="250" height="30" as="geometry" />
         </mxCell>
         <mxCell id="nvfyEzK4BFwzWhvPfm2Y-60" value="&lt;b&gt;&lt;font color=&quot;#cc6600&quot;&gt;AvailablityCheckRequest&lt;/font&gt;&lt;/b&gt;&lt;div style=&quot;&quot;&gt;- userQuery&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b style=&quot;text-align: center;&quot;&gt;&lt;font color=&quot;#4c0099&quot;&gt;- IntentionDTO&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;-&amp;nbsp;&lt;b style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#0000ff&quot;&gt;SlotsDTO&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
@@ -262,12 +262,12 @@
         <mxCell id="nvfyEzK4BFwzWhvPfm2Y-61" value="&lt;div style=&quot;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;font color=&quot;#cc0000&quot;&gt;SlotsRequest&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;- userQuery&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;b style=&quot;text-align: center;&quot;&gt;&lt;font color=&quot;#4c0099&quot;&gt;- IntentionDTO&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;-&amp;nbsp;&lt;b style=&quot;background-color: initial;&quot;&gt;&lt;font color=&quot;#0000ff&quot;&gt;SlotsDTO&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
           <mxGeometry x="325.38" y="628.5" width="154" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-62" value="SlotsFinder" style="swimlane;startSize=20;fontStyle=1" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
+        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-62" value="(I) SlotsFinder" style="swimlane;startSize=20;fontStyle=1;fillColor=#009900;" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
           <mxGeometry x="621.38" y="670" width="220" height="90" as="geometry">
             <mxRectangle x="490" y="890" width="50" height="40" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-63" value="getSlots(&lt;b style=&quot;text-align: left;&quot;&gt;&lt;font color=&quot;#cc0000&quot;&gt;SlotsRequest&lt;/font&gt;&lt;/b&gt;)" style="rounded=0;whiteSpace=wrap;html=1;" parent="nvfyEzK4BFwzWhvPfm2Y-62" vertex="1">
+        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-63" value="getSlots(&lt;b&gt;&lt;font color=&quot;#4c0099&quot;&gt;IntentionDTO&lt;/font&gt;&lt;/b&gt;,&lt;b style=&quot;text-align: left;&quot;&gt;&lt;font color=&quot;#0000ff&quot;&gt;SlotsDTO&lt;/font&gt;&lt;/b&gt;)" style="rounded=0;whiteSpace=wrap;html=1;" parent="nvfyEzK4BFwzWhvPfm2Y-62" vertex="1">
           <mxGeometry x="10" y="40" width="190" height="30" as="geometry" />
         </mxCell>
         <mxCell id="nvfyEzK4BFwzWhvPfm2Y-64" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="nvfyEzK4BFwzWhvPfm2Y-109" source="nvfyEzK4BFwzWhvPfm2Y-59" target="nvfyEzK4BFwzWhvPfm2Y-45" edge="1">
@@ -346,7 +346,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-100" value="DummyStaticSheduleProvider" style="swimlane;startSize=20;fontStyle=1" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
+        <mxCell id="nvfyEzK4BFwzWhvPfm2Y-100" value="DummySheduleProvider" style="swimlane;startSize=20;fontStyle=1" parent="nvfyEzK4BFwzWhvPfm2Y-109" vertex="1">
           <mxGeometry x="731.38" y="430" width="200" height="45" as="geometry">
             <mxRectangle x="620" y="600" width="50" height="40" as="alternateBounds" />
           </mxGeometry>
