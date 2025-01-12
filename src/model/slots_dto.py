@@ -26,7 +26,7 @@ class SlotsDTO:
     def __str__(self):
         return (f"SlotsDTO("
                 f"the_date='{self.__the_date}', "
-                f"today_date='{self.__slots}')")
+                f"slots='{self.__slots}')")
 
     def __repr__(self):
         return self.__str__()
